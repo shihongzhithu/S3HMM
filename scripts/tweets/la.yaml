@@ -1,0 +1,50 @@
+# specify the input here
+file:
+  dir: &DIR ../data/tweets/la/
+  input:
+    dir: &IN_DIR !join [*DIR, input/]
+    sequences: !join [*IN_DIR, sequences.txt]
+    words: !join [*IN_DIR, words.txt]
+
+# parameters for experiments settings
+exp:
+  dataset: 'tweets_la'
+  underlyingDistribution: '2dGaussian'
+  printLL: yes
+  printDetail: no
+  printEstimator: no
+  loadModel: no
+  saveModel: no
+  saveUserAcc: no
+
+hmm:
+  maxIter: 50
+  numState: 10
+  numComponent: 5
+
+ehmm:
+  maxIter: 20
+  numCluster: 5
+  initMethod: [random]
+
+sharehmm:
+  maxIter: 5
+  numState: 5
+  numComponent: 1000
+  sparsity: 0.1
+  numStateList: [2,3,4,5,6,7,8,9,10,11]
+  numComponentList: [100, 300, 500, 700, 1000]
+  sparsityList: [0.0, 0.0001]
+  evalNumState: no
+  evalNumComponent: no
+  evalSparsity: yes
+
+predict:
+  testRatio: 0.3
+  distThre: 3.0
+  timeThre: 300.0
+  K: [1,2,3,4,5]
+  # added by Keyang
+  avgTest: no
+  filterTest: yes # if set to yes, test set will only retain the seqs of the user with at least 1 training seqs
+

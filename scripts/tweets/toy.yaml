@@ -1,0 +1,52 @@
+# specify the input here
+file:
+  dir: &DIR ../data/tweets/toy/
+  input:
+    dir: &IN_DIR !join [*DIR, input/]
+    sequences: !join [*IN_DIR, sequences.txt]
+    words: !join [*IN_DIR, words.txt]
+
+# parameters for experiments settings
+exp:
+  dataset: 'tweets_toy'
+  underlyingDistribution: '2dGaussian'
+  printLL: yes
+  printDetail: no
+  printEstimator: no
+  loadModel: no
+  saveModel: no
+  saveUserAcc: yes
+
+hmm:
+  maxIter: 3
+  numState: 10
+  numComponent: 1
+
+ehmm:
+  maxIter: 2
+  numCluster: 5
+  initMethod: [random]
+
+sharehmm:
+  maxIter: 10
+  numState: 5
+  numComponent: 20
+  sparsity: 0.1
+  numStateList: [2,3]
+  numComponentList: [10, 15]
+  sparsityList: [0.0, 0.1, 0.2]
+  evalNumState: yes
+  evalNumComponent: yes
+  evalSparsity: yes
+
+predict:
+  testRatio: 0.3
+  # distance threshold for forming the candidate pool
+  distThre: 3.0
+  # time threshold
+  timeThre: 3600.0
+  K: [1,2,3,4,5]
+  avgTest: no
+  # if set to yes, test set will only retain the seqs of the user with at least 1 training seqs
+  filterTest: yes
+
