@@ -12,4 +12,4 @@ Please consider cite our paper if you find the paper and the codes useful.
 }
 ```
 
-This codes partially borrows from [GMove](https://drive.google.com/open?id=0Byrzhr4bOatCakZ1QkltM2oyNWM). 
+This codes partially borrow from [GMove](https://drive.google.com/open?id=0Byrzhr4bOatCakZ1QkltM2oyNWM). 
